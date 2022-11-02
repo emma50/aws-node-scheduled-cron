@@ -1,0 +1,28 @@
+org: emma50
+app: aws-node-project
+service: aws-node-scheduled-cron-project
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  vpc:
+    securityGroupIds:
+      - sg-0c28397daca308d7f
+    subnetIds:
+      - subnet-05e52f1b219567978
+      - subnet-0b2b40b307a558807
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every minute
+      - schedule: rate(1 minute)
+  cronHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every 2nd minute from Mon-Fri
+      - schedule: cron(0/2 * ? * MON-FRI *)
