@@ -18,13 +18,13 @@ provider:
 functions:
   rateHandler:
     handler: handler.run
-    description: Invoke Lambda function every minute
+    description: Invoke Lambda function every day
     events:
       # Invoke Lambda function every minute
       - schedule: rate(1 day)
   cronHandler:
     handler: handler.run
-    description: Invoke Lambda function every 2nd minute from Mon-Fri
+    description: Invoke Lambda function every 20th minute from 0 - 59mins, every 6th hour, a single day of the month, every month, Monday through Friday of the week, every year.
     events:
       # Invoke Lambda function every 2nd minute from Mon-Fri
       - schedule: cron(0/20 6 ? * MON-FRI *)
