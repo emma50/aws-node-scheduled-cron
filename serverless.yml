@@ -21,10 +21,10 @@ functions:
     description: Invoke Lambda function every minute
     events:
       # Invoke Lambda function every minute
-      - schedule: rate(1 minute)
+      - schedule: rate(1 day)
   cronHandler:
     handler: handler.run
     description: Invoke Lambda function every 2nd minute from Mon-Fri
     events:
       # Invoke Lambda function every 2nd minute from Mon-Fri
-      - schedule: cron(0/2 * ? * MON-FRI *)
+      - schedule: cron(0/20 6 ? * MON-FRI *)
