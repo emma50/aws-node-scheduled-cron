@@ -18,7 +18,7 @@ provider:
 functions:
   rateHandler:
     handler: handler.run
-    description: Invoke Lambda function every day
+    description: Invoke Lambda function once every day
     events:
       # Invoke Lambda function every day
       - schedule: rate(1 day)
